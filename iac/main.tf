@@ -1,11 +1,30 @@
 # Author: tgibson
 module "vpc" {
-  source              = "./modules/vpc"
+  source = "./modules/vpc"
+
+  # pass these in from root variables
+  project = var.project
+  env     = var.env
+
+  # existing inputs
   vpc_cidr            = var.vpc_cidr
   public_subnets      = var.public_subnets
   private_app_subnets = var.private_app_subnets
   private_db_subnets  = var.private_db_subnets
-  tags                = var.tags
+
+  # optional extra tags (merged in module)
+  tags = {
+    Owner      = "TGibson"
+    CostCenter = "Dev01"
+  }
+}
+
+module "security" {
+  source            = "./modules/security"
+  vpc_id            = module.vpc.vpc_id
+  alb_allowed_cidrs = var.allowed_http_cidrs
+  app_port          = var.app_port
+  tags              = var.tags
 }
 
 module "iam" {
@@ -14,32 +33,18 @@ module "iam" {
   tags    = var.tags
 }
 
-module "security" {
-  source            = "./modules/security"
-  vpc_id            = module.vpc.vpc_id
-  alb_allowed_cidrs = var.allowed_http_cidrs
-  tags              = var.tags
-}
-
-module "s3" {
-  source          = "./modules/s3"
-  project         = var.project
-  enable_alb_logs = var.enable_alb_logging
-  tags            = var.tags
-}
-
 module "asg" {
-  source               = "./modules/asg"
-  vpc_id               = module.vpc.vpc_id
-  private_subnets      = module.vpc.private_app_subnet_ids
-  asg_min_size         = var.min_size
-  asg_max_size         = var.max_size
-  asg_desired          = var.desired_capacity
-  instance_type        = var.instance_type
-  app_sg_id            = module.security.app_sg_id
-  iam_instance_profile = module.iam.instance_profile_name
-  user_data            = file("./user_data/app.sh")
-  tags                 = var.tags
+  source              = "./modules/asg"
+  vpc_id              = module.vpc.vpc_id
+  private_app_subnets = module.vpc.private_app_subnet_ids
+  instance_type       = var.instance_type
+  app_port            = var.app_port
+  asg_min_size        = var.asg_min
+  asg_max_size        = var.asg_max
+  asg_desired         = var.asg_desired
+  instance_profile    = module.iam.instance_profile
+  app_sg_id           = module.security.app_sg_id
+  tags                = var.tags
 }
 
 module "alb" {
@@ -60,8 +65,17 @@ module "rds" {
   vpc_id            = module.vpc.vpc_id
   db_subnet_ids     = module.vpc.private_db_subnet_ids
   db_sg_id          = module.security.db_sg_id
-  db_instance_class = var.db_instance_class
+  db_instance_class = var.rds_instance_class
   db_name           = var.db_name
   db_username       = var.db_username
+  db_password       = var.db_password
+  engine_version    = var.rds_engine_version
+  multi_az          = var.rds_multi_az
   tags              = var.tags
+}
+
+module "s3" {
+  source  = "./modules/s3"
+  project = var.project
+  tags    = var.tags
 }

@@ -1,0 +1,130 @@
+:\test\phase2-wsfc-aws\iac>terraform apply "plan.out"
+module.alb.aws_lb.alb: Destroying... [id=arn:aws:elasticloadbalancing:us-east-1:203018014039:loadbalancer/app/alb-web/d3005768b2135570]
+module.vpc.aws_nat_gateway.nat: Creating...
+module.asg.aws_lb_target_group.app: Creating...
+module.s3.aws_s3_bucket.artifacts: Creating...
+module.rds.aws_db_instance.postgres: Creating...
+module.asg.aws_launch_template.app: Creating...
+module.asg.aws_lb_target_group.app: Creation complete after 1s [id=arn:aws:elasticloadbalancing:us-east-1:203018014039:targetgroup/tg20250824161600772900000002/a365f8357fd57e50]
+module.s3.aws_s3_bucket.artifacts: Creation complete after 1s [id=phase2-web-artifacts-4hrxjq]
+module.s3.aws_s3_bucket_public_access_block.artifacts: Creating...
+module.s3.aws_s3_bucket_versioning.artifacts: Creating...
+module.s3.aws_s3_bucket_public_access_block.artifacts: Creation complete after 0s [id=phase2-web-artifacts-4hrxjq]
+module.s3.aws_s3_bucket_versioning.artifacts: Creation complete after 2s [id=phase2-web-artifacts-4hrxjq]
+module.asg.aws_launch_template.app: Creation complete after 6s [id=lt-010a5a0f7f4c8b88d]
+module.asg.aws_autoscaling_group.app: Creating...
+module.alb.aws_lb.alb: Still destroying... [id=arn:aws:elasticloadbalancing:us-east-1:...dbalancer/app/alb-web/d3005768b2135570, 00m10s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [00m10s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [00m10s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [00m10s elapsed]
+module.alb.aws_lb.alb: Destruction complete after 17s
+module.s3.aws_s3_bucket.logs: Creating...
+module.s3.aws_s3_bucket.logs: Creation complete after 1s [id=phase2-web-logs-4hrxjq]
+module.s3.aws_s3_bucket_public_access_block.logs: Creating...
+module.s3.aws_s3_bucket_policy.logs_allow_alb_delivery: Creating...
+module.alb.aws_lb.alb: Creating...
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Creating...
+module.s3.aws_s3_bucket_public_access_block.logs: Creation complete after 1s [id=phase2-web-logs-4hrxjq]
+module.s3.aws_s3_bucket_policy.logs_allow_alb_delivery: Creation complete after 1s [id=phase2-web-logs-4hrxjq]
+module.vpc.aws_nat_gateway.nat: Still creating... [00m20s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [00m20s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [00m20s elapsed]
+module.alb.aws_lb.alb: Still creating... [00m10s elapsed]
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Still creating... [00m10s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [00m30s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [00m30s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [00m30s elapsed]
+module.alb.aws_lb.alb: Still creating... [00m20s elapsed]
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Still creating... [00m20s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [00m40s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [00m40s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [00m40s elapsed]
+module.alb.aws_lb.alb: Still creating... [00m30s elapsed]
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Still creating... [00m30s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [00m50s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [00m50s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [00m50s elapsed]
+module.alb.aws_lb.alb: Still creating... [00m40s elapsed]
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Still creating... [00m40s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [01m00s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [01m00s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [01m00s elapsed]
+module.alb.aws_lb.alb: Still creating... [00m50s elapsed]
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Still creating... [00m50s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [01m10s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [01m10s elapsed]
+module.s3.aws_s3_bucket_lifecycle_configuration.logs: Creation complete after 56s [id=phase2-web-logs-4hrxjq]
+module.asg.aws_autoscaling_group.app: Still creating... [01m10s elapsed]
+module.alb.aws_lb.alb: Still creating... [01m00s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [01m20s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [01m20s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [01m20s elapsed]
+module.alb.aws_lb.alb: Still creating... [01m10s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [01m30s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [01m30s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [01m30s elapsed]
+module.alb.aws_lb.alb: Still creating... [01m20s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [01m40s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [01m40s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [01m40s elapsed]
+module.alb.aws_lb.alb: Still creating... [01m30s elapsed]
+module.vpc.aws_nat_gateway.nat: Still creating... [01m50s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [01m50s elapsed]
+module.vpc.aws_nat_gateway.nat: Creation complete after 1m54s [id=nat-01d88ac67405cc5d1]
+module.vpc.aws_route.private_db_egress: Modifying... [id=r-rtb-06d0519332d84348f1080289494]
+module.vpc.aws_route.private_app_egress: Modifying... [id=r-rtb-014f23e9a0386901c1080289494]
+module.vpc.aws_route.private_db_egress: Modifications complete after 1s [id=r-rtb-06d0519332d84348f1080289494]
+module.vpc.aws_route.private_app_egress: Modifications complete after 1s [id=r-rtb-014f23e9a0386901c1080289494]
+module.asg.aws_autoscaling_group.app: Still creating... [01m50s elapsed]
+module.alb.aws_lb.alb: Still creating... [01m40s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [02m00s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [02m00s elapsed]
+module.alb.aws_lb.alb: Still creating... [01m50s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [02m10s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [02m10s elapsed]
+module.alb.aws_lb.alb: Still creating... [02m00s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [02m20s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [02m20s elapsed]
+module.alb.aws_lb.alb: Still creating... [02m10s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [02m30s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [02m30s elapsed]
+module.alb.aws_lb.alb: Still creating... [02m20s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [02m40s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [02m40s elapsed]
+module.alb.aws_lb.alb: Still creating... [02m30s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [02m50s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [02m50s elapsed]
+module.alb.aws_lb.alb: Still creating... [02m40s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [03m00s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [03m00s elapsed]
+module.alb.aws_lb.alb: Still creating... [02m50s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [03m10s elapsed]
+module.asg.aws_autoscaling_group.app: Still creating... [03m10s elapsed]
+module.alb.aws_lb.alb: Still creating... [03m00s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [03m20s elapsed]
+module.asg.aws_autoscaling_group.app: Creation complete after 3m14s [id=asg]
+module.alb.aws_lb.alb: Creation complete after 3m3s [id=arn:aws:elasticloadbalancing:us-east-1:203018014039:loadbalancer/app/alb-web/2c6d1fc50db95a4c]
+module.alb.aws_lb_listener.http_redirect_or_forward: Creating...
+module.alb.aws_lb_listener.http_redirect_or_forward: Creation complete after 0s [id=arn:aws:elasticloadbalancing:us-east-1:203018014039:listener/app/alb-web/2c6d1fc50db95a4c/cf4049af39dc519a]
+module.rds.aws_db_instance.postgres: Still creating... [03m30s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [03m40s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [03m50s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [04m00s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [04m10s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [04m20s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [04m30s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [04m40s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [04m50s elapsed]
+module.rds.aws_db_instance.postgres: Still creating... [05m00s elapsed]
+module.rds.aws_db_instance.postgres: Creation complete after 5m6s [id=db-UIH7R4YJPLYRQKGW5JCFZV3GCM]
+
+Apply complete! Resources: 14 added, 2 changed, 1 destroyed.
+
+Outputs:
+
+alb_dns_name = "alb-web-361150572.us-east-1.elb.amazonaws.com"
+asg_name = "asg"
+logs_bucket = "phase2-web-logs-4hrxjq"
+rds_endpoint = "pg-db.cgpm0cqsihgx.us-east-1.rds.amazonaws.com"
+s3_bucket = "phase2-web-artifacts-4hrxjq"
+vpc_id = "vpc-0ca1b3c9483438d0e"
