@@ -1,8 +1,8 @@
-name: Terraform Destroy (3pm ET)
+name: Terraform Destroy (On-Demand)
 
 on:
-  schedule:
-    - cron: "0 * * * *"   # run hourly, at minute 0 (UTC)
+  # schedule:
+  #   - cron: "0 * * * *"   # run hourly, at minute 0 (UTC)
   workflow_dispatch: {}
 
 jobs:
@@ -17,17 +17,17 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # Only continue when it's 15:00 in America/New_York
-      - name: Guard — run only at 3:00 PM Eastern
-        id: guard
-        run: |
-          ET_HOUR=$(TZ=America/New_York date +%H)
-          ET_MIN=$(TZ=America/New_York date +%M)
-          echo "Current ET time: ${ET_HOUR}:${ET_MIN}"
-          if [ "$ET_HOUR" != "15" ] || [ "$ET_MIN" != "00" ]; then
-            echo "Not 3:00 PM ET — exiting gracefully."
-            exit 0
-          fi
+      # Guard step not needed anymore since no schedule is set
+      # - name: Guard — run only at 3:00 PM Eastern
+      #   id: guard
+      #   run: |
+      #     ET_HOUR=$(TZ=America/New_York date +%H)
+      #     ET_MIN=$(TZ=America/New_York date +%M)
+      #     echo "Current ET time: ${ET_HOUR}:${ET_MIN}"
+      #     if [ "$ET_HOUR" != "15" ] || [ "$ET_MIN" != "00" ]; then
+      #       echo "Not 3:00 PM ET — exiting gracefully."
+      #       exit 0
+      #     fi
 
       - uses: hashicorp/setup-terraform@v3
 
