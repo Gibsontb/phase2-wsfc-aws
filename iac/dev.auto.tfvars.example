@@ -1,8 +1,0 @@
-# Author: tgibson
-project = "phase2-web"
-env     = "dev"
-region  = "us-east-1"
-
-# Enable TLS on ALB (optional)
-# enable_tls          = true
-# acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
