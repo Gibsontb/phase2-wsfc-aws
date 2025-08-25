@@ -32,3 +32,4 @@ vpc_id = "vpc-0ca1b3c9483438d0e"
 
 
 3. **Scripts Utility** destroy.ps1, To be run in the iac directory with powershell. It will completely destroy all infrastructure deployed.
+                       undeploy.sh, 
